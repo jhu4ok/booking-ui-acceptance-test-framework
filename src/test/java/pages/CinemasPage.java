@@ -86,7 +86,7 @@ public class CinemasPage extends BasePage {
     @FindBy(css = "div[data-flt=\"data-serv20\"")
     WebElement screenx;
 
-    @FindBy(css = "body > div.mob_fix_container > div.cl_cinemas > div:nth-child(2) > a > div")
+    @FindBy(css = "body > div.mob_fix_container > div.cl_cinemas > div:nth-child(2) > a")
     WebElement cinemaPosterButton;
 
     @FindBy(css = "body > div.mob_fix_container > div.cl_cinemas > div:nth-child(2) > div.meta > a")

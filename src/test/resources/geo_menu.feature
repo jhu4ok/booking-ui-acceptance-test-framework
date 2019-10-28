@@ -7,8 +7,7 @@ Feature: Geo Location Menu
     So that it can help me search films schedule related my location
 
     Background:
-        Given user open home page
-        And user accept geo location
+        Given user open home page with geo window
 
     Scenario: Geo location menu open when click other location button
         And user verify the geo window "GEO_WINDOW" element is displayed
@@ -45,7 +44,7 @@ Feature: Geo Location Menu
     Scenario Outline: Select optional geo location and check it displayed
         And user click the geo menu "GEO_SELECT" element
         And user verify the geo menu "GEO_MENU" element is displayed
-        When user click on "<cityName>" city list button
+        When user click the geo menu "<cityName>" city list button
         Then user verify "<cityName>" city list button is active
         And user verify "<cityName>" city cinemas list
         Examples:

@@ -71,7 +71,7 @@ public class FeedbackForm extends BasePage {
                 webElement = getPhoneInput();
                 break;
             case "PHONE_INPUT_INVALID":
-                webElement = getPhoneInput();
+                webElement = getPhoneInputInvalid();
                 break;
             case "ENQUIRE_TYPE_INPUT":
                 webElement = getEnquireType();

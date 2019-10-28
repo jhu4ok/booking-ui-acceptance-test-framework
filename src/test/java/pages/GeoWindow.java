@@ -25,7 +25,7 @@ public class GeoWindow extends BasePage {
     private By currentGeo = new By.ByCssSelector(".geo");
 
     public void getNewWebPage(String webPage) {
-        new Driver().getDriver().get(webPage);
+        new Driver().getChromeDriver().get(webPage);
     }
 }
 

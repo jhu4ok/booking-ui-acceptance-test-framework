@@ -119,14 +119,6 @@ public class BasePage {
         return driver.getCurrentUrl();
     }
 
-//    public boolean isElementPresent(By locator) {
-//        try {
-//            return Objects.nonNull(findWebElement(locator));
-//        } catch (NoSuchElementException e) {
-//            return false;
-//        }
-//    }
-
     public boolean isElementPresent(WebElement webElement) {
         try {
             return Objects.nonNull(webElement.getLocation());
@@ -167,7 +159,6 @@ public class BasePage {
         }
     }
 
-
     public boolean isElementNotDisplay(WebElement webElement) {
         try {
             return waiters.waitForElementToDisappear(webElement);
@@ -175,28 +166,6 @@ public class BasePage {
             return false;
         }
     }
-//    public boolean isElementsDisplay(By locator) {
-//        try {
-//            return findWebElement(locator).isDisplayed();
-//        } catch (NoSuchElementException | StaleElementReferenceException e) {
-//            return false;
-//        }
-//    }
-
-//    public boolean isElementDisappear(By locator) {
-//        try {
-//            return waiters.waitForElementToDisappear(locator);
-//        } catch (NoSuchElementException | StaleElementReferenceException e) {
-//            return false;
-//        }
-//    }
-
-//    public void inputText(By locator, String textToInput) {
-//        WebElement webElement = waiters.waitForElementToBeDisplayed(locator);
-//        webElement.clear();
-//        webElement.click();
-//        webElement.sendKeys(textToInput);
-//    }
 
     public void clickOnElement(By locator) {
         try {
@@ -217,19 +186,6 @@ public class BasePage {
     public void waitForPageLoad() {
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
     }
-//
-//    public void waitForPageLoad(WebElement element) {
-//        waiters.waitForElementToBeDisplayed(element);
-//    }
-//
-//    public void assertTextOnWebElement(By locator, String expectedText) {
-//        String actualText = waiters.waitForElementToBeDisplayed(locator).getText();
-//        assertThat(actualText, is(expectedText));
-//    }
-//
-//    public void moveToElementAndClick(By locator) {
-//        actions.moveToElement(findWebElement(locator)).click();
-//    }
 
     public void moveToElementAndClick(WebElement element) {
         moveToElement(element);
@@ -239,10 +195,6 @@ public class BasePage {
     public void moveToElement(WebElement element) {
         actions.moveToElement(element).perform();
     }
-
-//    public void closeBrowser() {
-//        driver.quit();
-//    }
 
     public void refreshPage() {
         LOG.info("Refreshing page....");

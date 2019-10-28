@@ -1,4 +1,4 @@
-@RegressionLOC
+@Regression
 
 Feature: Film Schedule
 

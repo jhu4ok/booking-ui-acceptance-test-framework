@@ -50,7 +50,6 @@ public class SoonPage extends BasePage {
     @FindBy(css = "div:nth-child(1) > div.el_right > a:nth-child(1) > span.soon_fm_name")
     WebElement posterName;
 
-
     public WebElement getSoonPageElement(String elementName) {
         WebElement webElement = null;
         switch (elementName) {
@@ -101,5 +100,4 @@ public class SoonPage extends BasePage {
         }
         return webElement;
     }
-    
 }
