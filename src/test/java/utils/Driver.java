@@ -18,7 +18,7 @@ public class Driver {
         return driver;
     }
 
-    private static WebDriver getChromeDriver() {
+    public static WebDriver getChromeDriver() {
         LOG.info("Initialize Chrome Driver:");
         return new ChromeDriver(getChromeOptions());
     }
