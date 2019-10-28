@@ -24,10 +24,9 @@ Feature: Home Page
         And user verify the home page "MOVE_TO_LEFT" element is not displayed
 
     Scenario: Check home page move to right button works
-        And user verify
         And user verify the home page "MOVE_TO_RIGHT" element is displayed
         And user verify the home page "MOVE_TO_LEFT" element is not displayed
-        When user click on "MOVE_TO_RIGHT" button
+        When user click on home page "MOVE_TO_RIGHT" button
         Then user verify the home page "MOVE_TO_LEFT" element is displayed
         And user verify the home page "MOVE_TO_RIGHT" element is displayed
 
