@@ -7,6 +7,6 @@ import org.junit.runner.RunWith;
     features = "src\\test\\resources",
     tags = "@Regression", junit = "--step-notifications", plugin = {
     "html:target/cucumber", "json:target/cucumber.json", "rerun:target/rerun/failed_scenarios.txt", "pretty",}, glue = {
-    "stepdefinitions", "enums", "pages", "setup", "utils", "utils.Hooks"})
+    "stepdefinitions", "enums", "pages", "setup", "utils"})
 public class AutomatedTestRunner {
 }

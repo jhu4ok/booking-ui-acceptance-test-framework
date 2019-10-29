@@ -1,9 +1,5 @@
 package enums;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 public enum CityNames {
     KYIV("Київ"),
     DNIPRO("Дніпро"),
@@ -33,18 +29,4 @@ public enum CityNames {
         return cityName;
     }
 
-    public static CityNames getEnum(String labelName) {
-        for (CityNames name : values()) {
-            if (name.getCityName().equals(labelName)) {
-                return name;
-            }
-        }
-        throw new IllegalArgumentException("No enum constant matching label name");
-    }
-
-    public static List<String> getCityNamesTree() {
-        return Stream.of(CityNames.values())
-                .map(CityNames::getCityName)
-                .collect(Collectors.toList());
-    }
 }

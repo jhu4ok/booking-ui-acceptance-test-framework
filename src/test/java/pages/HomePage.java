@@ -19,8 +19,6 @@ public class HomePage extends BasePage {
 
     private By acceptGeoWindow = new By.ByCssSelector(".geo_veil.geolocated.desktop-only");
 
-    private String cityNameSelector = "//span[contains(text(),'%s')]";
-
     private String cityCinemasSelector = "//div[contains(@data-cityname,'%s')]";
 
     private String cinemasSelector = "//p[@class='cname_s cname']/span";

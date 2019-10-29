@@ -1,48 +1,139 @@
 package pages;
 
 import lombok.Data;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import utils.Driver;
+import utils.Waiters;
+
+import java.util.concurrent.TimeUnit;
+
+import static pages.BasePage.LOG;
 
 @Data
-public class GeoMenu extends BasePage {
+public class GeoMenu {
 
-    @FindBy(css = ".geo_select")
-    private WebElement geoSelect;
+    private By geoSelect = new By.ByCssSelector(".geo_select");
 
-    @FindBy(css = ".menu.right_menu.animatedlong.slideInUp")
-    private WebElement geoMenu;
+    private By geoMenu = new By.ByCssSelector("body > div.menu.right_menu.animatedlong.slideInUp");
 
-    @FindBy(css = ".citylist")
-    private WebElement cityList;
+    private By cityList = new By.ByCssSelector(".citylist");
 
-    @FindBy(css = ".rm_clist")
-    private WebElement cinemaList;
+    private By cinemaList = new By.ByCssSelector(".rm_clist");
 
-    @FindBy(css = "img.menu_close")
-    private WebElement closeButton;
+    private By closeButton = new By.ByCssSelector("div.menu.right_menu.animatedlong.slideInUp > img.menu_close");
 
-    public WebElement getGeoMenuElement(String elementName) {
-        WebElement webElement = null;
-        switch (elementName) {
+    private By otherLocation = new By.ByCssSelector(".other");
+
+    private By geoWindow =
+        new By.ByCssSelector("body > div.geo_veil.geolocated.desktop-only > div.geo_balloon.geolocated");
+
+    private String cityNameSelector = "/html/body/div/div/p/span[contains(text(),'%s')]";
+
+    private String cityNameSelectorClass = "/html/body/div/div/p/span[contains(text(),'%s')]/parent::*";
+
+    private WebDriver driver = Driver.getChromeDriver();
+
+    Waiters waiters = new Waiters(driver);
+
+    Actions actions = new Actions(driver);
+
+    public By getGeoMenuElement(String locatorName) {
+        By locator = null;
+        switch (locatorName) {
+            case "OTHER_LOCATION":
+                locator = getOtherLocation();
+                break;
+            case "GEO_WINDOW":
+                locator = getGeoWindow();
+                break;
             case "GEO_MENU":
-                webElement = getGeoMenu();
+                locator = getGeoMenu();
                 break;
             case "GEO_SELECT":
-                webElement = getGeoSelect();
+                locator = getGeoSelect();
                 break;
             case "CITY_LIST":
-                webElement = getCityList();
+                locator = getCityList();
                 break;
             case "CLOSE_BUTTON":
-                webElement = getCloseButton();
+                locator = getCloseButton();
                 break;
             case "CINEMA_LIST":
-                webElement = getCinemaList();
+                locator = getCinemaList();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                LOG.error("Unsupported elements type: " + locatorName);
         }
-        return webElement;
+        return locator;
+    }
+
+    public void getNewWebPage(String webPage) {
+        driver.get(webPage);
+    }
+
+    public void waitForPageLoad() {
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+    }
+
+    public boolean isElementNotDisplay(WebElement webElement) {
+        try {
+            return waiters.waitForElementToDisappear(webElement);
+        } catch (NoSuchElementException | TimeoutException e) {
+            return false;
+        }
+    }
+
+    public void moveToElementAndClick(By locator) {
+        moveToElement(locator);
+        waiters.waitForElementToBeClickable(locator).click();
+    }
+
+    public void moveToElement(By locator) {
+        actions.moveToElement(findWebElement(locator)).perform();
+    }
+
+    public void clickOnElement(By locator) {
+        try {
+            waiters.waitForElementToBeClickable(locator).click();
+        } catch (WebDriverException e) {
+            throw new RuntimeException("Element Not Fount On Page: " + e.getMessage());
+        }
+    }
+
+    public boolean isElementDisplay(WebElement webElement) {
+        try {
+            return waiters.waitForElementToBeDisplayed(webElement).isDisplayed();
+        } catch (NoSuchElementException | TimeoutException e) {
+            return false;
+        }
+    }
+
+    public void clickOnElement(WebElement element) {
+        try {
+            waiters.waitForElementToBeClickable(element).click();
+        } catch (WebDriverException e) {
+            throw new RuntimeException("Element Not Fount On Page: " + e.getMessage());
+        }
+    }
+
+    public WebElement findWebElement(By locator) {
+        return waiters.waitForElementToBeDisplayed(locator);
+    }
+
+    public boolean isElementActive(WebElement element) {
+        try {
+            return element.getAttribute("class").contains("active");
+        } catch (NoSuchElementException | StaleElementReferenceException e) {
+            return false;
+        }
+    }
+
+    public boolean isElementDisplay(By locator) {
+        try {
+            return driver.findElement(locator).isDisplayed();
+        } catch (NoSuchElementException | StaleElementReferenceException e) {
+            return false;
+        }
     }
 }
