@@ -8,7 +8,7 @@ import setup.TestContext;
 
 public class StepUtils {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(StepUtils.class);
+    protected static final Logger LOG = LoggerFactory.getLogger(Hooks.class);
 
     protected TestContext testContext = new TestContext();
 

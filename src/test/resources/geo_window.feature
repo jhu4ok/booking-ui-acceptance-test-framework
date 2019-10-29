@@ -16,13 +16,13 @@ Feature: Geo Location Window
 
   Scenario: Accept current geo location
     And user verify the geo window "GEO_WINDOW" element is displayed
-    When user click the geo window "OTHER_LOCATION" element
-    Then user verify "proposed" location is selected
+    When user accept geo location
+    Then user verify "PROPOSED" location is selected
 
   Scenario: Select other geo location
     And user verify the geo window "GEO_WINDOW" element is displayed
     When user click on geo window other location button
-    Then user verify the geo menu "GEO_MENU" element is displayed
+    Then user verify the geo window "GEO_MENU" element is displayed
 
 
 
