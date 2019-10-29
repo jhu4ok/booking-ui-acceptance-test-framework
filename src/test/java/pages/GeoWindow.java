@@ -113,8 +113,8 @@ public class GeoWindow {
         return waiters.waitForElementToBeDisplayed(locator);
     }
 
-    public List<WebElement> findWebElements(By locator) {
-        return driver.findElements(locator);
+    public WebElement findWebElementNotWait(By locator) {
+        return driver.findElement(locator);
     }
 
     public boolean isElementDisplay(By locator) {

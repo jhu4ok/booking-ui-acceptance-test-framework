@@ -24,8 +24,7 @@ public class GeoWindow_sd extends StepUtils {
     @And("^user accept geo location$")
     public void user_accept_geo_location() {
         try {
-            if (geoWindow.isElementDisplay(geoWindow.getAcceptLocation())) {
-                WebElement w = geoWindow.findWebElement(geoWindow.getGeoQuestion());
+            if (geoWindow.findWebElementNotWait(geoWindow.getAcceptLocation()).isDisplayed()) {
                 context.put("QUESTION", geoWindow.findWebElement(geoWindow.getGeoQuestion()).getText());
                 geoWindow.clickOnElement(geoWindow.getAcceptLocation());
             }
