@@ -4,24 +4,23 @@ import io.cucumber.core.api.Scenario;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class Hooks {
-    private static final Logger LOG = LoggerFactory.getLogger(Hooks.class);
 
     @Before
     public void beforeScenario(Scenario scenario) {
-        LOG.info("###### Starting Test Scenario : {} ######", scenario.getName());
+        log.info("###### Starting Test Scenario : {} ######", scenario.getName());
     }
 
     @After
     public void afterScenario(Scenario scenario) {
 
-        LOG.info("###### Finished Test Scenario : {} ######",
+        log.info("###### Finished Test Scenario : {} ######",
                  scenario.getName() + " -> Status: " + scenario.getStatus());
 
         if (scenario.isFailed()) {
@@ -35,7 +34,7 @@ public class Hooks {
                 byte[] screenShot = ((TakesScreenshot) Driver.driver).getScreenshotAs(OutputType.BYTES);
                 scenario.embed(screenShot, "image/png");
             } catch (WebDriverException e) {
-                LOG.error(e.getMessage());
+                log.error(e.getMessage());
             }
         }
     }

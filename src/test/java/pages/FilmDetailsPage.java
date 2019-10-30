@@ -2,11 +2,13 @@ package pages;
 
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
+@Slf4j
 public class FilmDetailsPage extends BasePage {
 
     @FindBy(css = ".ct_holder")
@@ -96,7 +98,7 @@ public class FilmDetailsPage extends BasePage {
                 webElement = getSessionTime();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                log.error("Unsupported elements type: " + elementName);
         }
         return webElement;
     }

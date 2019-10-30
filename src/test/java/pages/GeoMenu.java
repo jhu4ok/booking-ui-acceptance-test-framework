@@ -1,6 +1,7 @@
 package pages;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import utils.Driver;
@@ -8,9 +9,9 @@ import utils.Waiters;
 
 import java.util.concurrent.TimeUnit;
 
-import static pages.BasePage.LOG;
 
 @Data
+@Slf4j
 public class GeoMenu {
 
     private By geoSelect = new By.ByCssSelector(".geo_select");
@@ -63,7 +64,7 @@ public class GeoMenu {
                 locator = getCinemaList();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + locatorName);
+                log.error("Unsupported elements type: " + locatorName);
         }
         return locator;
     }

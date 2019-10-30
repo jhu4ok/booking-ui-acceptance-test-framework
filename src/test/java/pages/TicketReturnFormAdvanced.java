@@ -1,10 +1,12 @@
 package pages;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
+@Slf4j
 public class TicketReturnFormAdvanced extends BasePage {
 
     @FindBy(css = "body > div.bto.refund_form.nad > div.body_form")
@@ -17,7 +19,7 @@ public class TicketReturnFormAdvanced extends BasePage {
                 webElement = getReturnFormAdvanced();
                 break;
             default:
-                LOG.error("Unsupported ticket return form elements type: " + elementName);
+                log.error("Unsupported ticket return form elements type: " + elementName);
         }
         return webElement;
     }

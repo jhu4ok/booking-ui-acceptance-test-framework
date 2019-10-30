@@ -2,11 +2,13 @@ package pages;
 
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
+@Slf4j
 public class HomePage extends BasePage {
     @FindBy(xpath = "//div[@class=\"mp_poster \"][1]")
     WebElement firstPoster;
@@ -45,7 +47,7 @@ public class HomePage extends BasePage {
                 webElement = getMoveToLeft();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                log.error("Unsupported elements type: " + elementName);
         }
         return webElement;
     }

@@ -3,6 +3,7 @@ package pages;
 
 import com.google.common.collect.ImmutableMap;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.Map;
 
 @Data
+@Slf4j
 public class CinemasPage extends BasePage {
 
     @FindBy(css = "div.cl_cinemas > div:nth-child(1) > div.meta > div > p.top > a > span")
@@ -204,7 +206,7 @@ public class CinemasPage extends BasePage {
                 webElement = getScreenx();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                log.error("Unsupported elements type: " + elementName);
         }
         return webElement;
     }
@@ -235,7 +237,7 @@ public class CinemasPage extends BasePage {
                 break;
 
             default:
-                LOG.error("Unsupported elements type: " + locatorName);
+                log.error("Unsupported elements type: " + locatorName);
         }
         return locator;
     }

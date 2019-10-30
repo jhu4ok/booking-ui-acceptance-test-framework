@@ -1,14 +1,11 @@
 package utils;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+;
+import lombok.extern.slf4j.Slf4j;
 import setup.TestContext;
 
-
+@Slf4j
 public class StepUtils {
-
-    protected static final Logger LOG = LoggerFactory.getLogger(Hooks.class);
 
     protected TestContext testContext = new TestContext();
 

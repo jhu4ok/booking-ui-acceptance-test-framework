@@ -2,11 +2,13 @@ package pages;
 
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
+@Slf4j
 public class CinemaPage extends BasePage {
 
     @FindBy(css = "div.mob_fix_container.mob_fix_container-cinema")
@@ -62,7 +64,7 @@ public class CinemaPage extends BasePage {
 
     @FindBy(css = "div.cinema_schedule_header > div > div > a:nth-child(2)")
     WebElement nextDay;
-//body > div.mob_fix_container > div > div > div.column3 > div.date_select > ul > li:nth-child(2)
+
     @FindBy(css = "ul.filter_list.list_format>li[data-format=\"2D\"]")
     WebElement twoD;
 
@@ -128,7 +130,7 @@ public class CinemaPage extends BasePage {
                 locator = getCinemaFilterHint();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + locatorName);
+                log.error("Unsupported elements type: " + locatorName);
         }
         return locator;
     }
@@ -213,7 +215,7 @@ public class CinemaPage extends BasePage {
                 break;
 
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                log.error("Unsupported elements type: " + elementName);
         }
         return webElement;
     }

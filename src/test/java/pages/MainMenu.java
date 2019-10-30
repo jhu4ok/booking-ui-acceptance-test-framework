@@ -2,10 +2,12 @@ package pages;
 
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
+@Slf4j
 public class MainMenu extends BasePage {
     @FindBy(css = ".menu-btn")
     WebElement mainMenuButton;
@@ -107,7 +109,7 @@ public class MainMenu extends BasePage {
                 webElement = getSocialMedia();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                log.error("Unsupported elements type: " + elementName);
         }
         return webElement;
     }

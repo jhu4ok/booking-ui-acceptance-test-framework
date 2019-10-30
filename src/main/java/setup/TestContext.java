@@ -2,8 +2,7 @@ package setup;
 
 
 import lombok.Data;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,9 +10,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 @Data
+@Slf4j
 public class TestContext {
-    private static final Logger LOG = LoggerFactory.getLogger(TestContext.class);
-
     private static String propertiesFilePath =
         "\\src\\main\\resources\\propertyFiles\\environment_variables.properties";
 
@@ -51,7 +49,7 @@ public class TestContext {
             InputStream input = new FileInputStream(System.getProperty("user.dir") + propertiesFilePath);
             properties.load(input);
         } catch (IOException e) {
-            LOG.error("Error read properties file: " + e.getMessage());
+            log.error("Error read properties file: " + e.getMessage());
         }
         return properties;
     }

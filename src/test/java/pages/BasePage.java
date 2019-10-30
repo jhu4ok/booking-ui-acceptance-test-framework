@@ -3,11 +3,10 @@ package pages;
 
 import com.google.common.collect.ImmutableMap;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import utils.Driver;
 import utils.Waiters;
 
@@ -18,9 +17,8 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 @Data
+@Slf4j
 public class BasePage {
-    protected static final Logger LOG = LoggerFactory.getLogger(BasePage.class);
-
     protected Map<String, String> pageNavigationMenus = new HashMap<>();
 
     WebDriver driver = new Driver().getDriver();
@@ -94,7 +92,7 @@ public class BasePage {
                 webElement = getMoveToLeft();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                log.error("Unsupported elements type: " + elementName);
         }
         return webElement;
     }
@@ -197,7 +195,7 @@ public class BasePage {
     }
 
     public void refreshPage() {
-        LOG.info("Refreshing page....");
+        log.info("Refreshing page....");
         driver.navigate().refresh();
     }
 

@@ -2,11 +2,15 @@ package pages;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
+@Slf4j
+@EqualsAndHashCode(callSuper = false)
 public class PromotionsPage extends BasePage {
 
     @FindBy(css = ".mp-promo-list")
@@ -46,8 +50,20 @@ public class PromotionsPage extends BasePage {
                 locator = getIsOverPromo();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + locatorName);
+                log.error("Unsupported elements type: " + locatorName);
         }
         return locator;
+    }
+
+    public WebElement getPromoPageElement(String elementName) {
+        WebElement webElement = null;
+        switch (elementName) {
+            case "PROMO_LIST":
+                webElement = getPromoList();
+                break;
+            default:
+                log.error("Unsupported elements type: " + elementName);
+        }
+        return webElement;
     }
 }

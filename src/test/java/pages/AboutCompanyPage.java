@@ -2,10 +2,12 @@ package pages;
 
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
+@Slf4j
 public class AboutCompanyPage extends BasePage {
 
     @FindBy(css = ".about_left")
@@ -61,7 +63,7 @@ public class AboutCompanyPage extends BasePage {
                 webElement = getFeedback();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                log.error("Unsupported elements type: " + elementName);
         }
         return webElement;
     }

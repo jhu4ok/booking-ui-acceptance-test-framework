@@ -1,10 +1,12 @@
 package pages;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
+@Slf4j
 public class TicketBookingPage extends BasePage {
 
     @FindBy(css = "#ekranInclude")
@@ -54,7 +56,7 @@ public class TicketBookingPage extends BasePage {
                 webElement = getContinueButton();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                log.error("Unsupported elements type: " + elementName);
         }
         return webElement;
     }

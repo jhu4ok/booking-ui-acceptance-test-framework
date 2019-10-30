@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -40,7 +41,7 @@ public class PromotionsPage_sd extends StepUtils {
     @And("^user verify the promotions page \"([^\"]*)\" element is displayed$")
     public void user_verify_the_promotions_page_element_is_displayed(String elementName) {
         assertTrue("Expected displayed \"" + elementName + "\" promotions page element is not displayed",
-                   promoPage.isElementDisplay(getPromoPageElement(elementName)));
+                   promoPage.isElementDisplay(promoPage.getPromoPageElement(elementName)));
     }
 
     @And("^user verify the promotions page \"([^\"]*)\" elements are present$")
@@ -54,18 +55,6 @@ public class PromotionsPage_sd extends StepUtils {
 
     @When("^user click the promotions page \"([^\"]*)\" element$")
     public void user_click_the_promotions_page_element(String elementName) {
-        promoPage.clickOnElement(getPromoPageElement(elementName));
-    }
-
-    private WebElement getPromoPageElement(String elementName) {
-        WebElement webElement = null;
-        switch (elementName) {
-            case "PROMO_LIST":
-                webElement = promoPage.getPromoList();
-                break;
-            default:
-                LOG.error("Unsupported elements type: " + elementName);
-        }
-        return webElement;
+        promoPage.clickOnElement(promoPage.getPromoPageElement(elementName));
     }
 }

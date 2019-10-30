@@ -1,10 +1,12 @@
 package pages;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
+@Slf4j
 public class CareerForm extends BasePage {
 
     @FindBy(css = "#feedback > div > div.support_option.kariera.cl_bk")
@@ -23,7 +25,7 @@ public class CareerForm extends BasePage {
                 webElement = getCareerForm();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                log.error("Unsupported elements type: " + elementName);
         }
         return webElement;
     }

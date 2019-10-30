@@ -1,18 +1,18 @@
 package pages;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import utils.Driver;
 import utils.Waiters;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static pages.BasePage.LOG;
 
 @Data
+@Slf4j
 public class GeoWindow {
 
     private By currentGeo = new By.ByCssSelector(".geo");
@@ -51,7 +51,7 @@ public class GeoWindow {
                 locator = getOtherLocation();
                 break;
             default:
-                LOG.error("Unsupported elements type: " + elementName);
+                log.error("Unsupported elements type: " + elementName);
         }
         return locator;
     }

@@ -1,15 +1,12 @@
 package utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-
+@Slf4j
 public class Driver {
-
-    private static final Logger LOG = LoggerFactory.getLogger(Driver.class);
 
     public static WebDriver driver = getChromeDriver();
 
@@ -19,7 +16,7 @@ public class Driver {
     }
 
     public static WebDriver getChromeDriver() {
-        LOG.info("Initialize Chrome Driver:");
+        log.info("Initialize Chrome Driver:");
         return new ChromeDriver(getChromeOptions());
     }
 
