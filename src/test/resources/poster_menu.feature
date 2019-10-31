@@ -10,10 +10,13 @@ Feature: Poster Menu
         Given user open home page
         And user accept geo location
 
-#    Scenario: Open home page and check film posters displayed
-##    Then  film posters displayed
+#    PRESALE_MARK .presale_mark
+
+    Scenario: Open home page and check film posters displayed
+        Then user verify "POSTER_LIST" element is displayed
+        And user verify "MOVE_TO_RIGHT" element is displayed
 #
-#    Scenario: Check advertising posters displayed
+#    Scenario: Check presale posters contain all information
 ##    Then  film posters displayed
 ##
 #    Scenario: Check film posters related current location
@@ -23,7 +26,7 @@ Feature: Poster Menu
     Scenario: Check film posters contain all needed information
         Then user verify the home page "POSTER_LIST" element is displayed
         And user verify the home page "POSTER_TITLE" element is displayed
-        And user click on home page "FILM_DETAILS_BUTTON" button
+        And user click on home page "POSTER_TITLE" button
 
 #    And  film posters displayed
 #    When user move mouse on poster

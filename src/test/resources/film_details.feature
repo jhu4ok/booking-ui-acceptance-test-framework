@@ -9,8 +9,7 @@ Feature: Film details Page
     Background:
         Given user open home page
         And user accept geo location
-        And user move to home page "FIRST_POSTER" element
-        And user click on home page "FILM_DETAILS_BUTTON" button
+        And user click on home page "POSTER_TITLE" button
         And user verify the film details page opened
 
     Scenario: Open film details page and check all attribute present
