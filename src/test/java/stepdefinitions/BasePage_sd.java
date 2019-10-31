@@ -20,6 +20,8 @@ public class BasePage_sd extends StepUtils {
 
     private String boardPageUrl = testContext.getBaseUrl() + testContext.getBoardEndpoint();
 
+    private String loginPageUrl = testContext.getBaseUrl() + testContext.getLoginEndpoint();
+
     private Scenario scenario;
 
     @Before
@@ -37,6 +39,12 @@ public class BasePage_sd extends StepUtils {
     public void user_validate_page() {
         assertTrue("Current URL " + basePage.getCurrentUrl() + " does not equals expected url " + boardPageUrl,
                    basePage.getCurrentUrl().equals(boardPageUrl));
+    }
+
+    @Then("^user validate login page opened$")
+    public void user_validate_login_page() {
+        assertTrue("Current URL " + basePage.getCurrentUrl() + " does not equals expected url " + loginPageUrl,
+                   basePage.getCurrentUrl().equals(loginPageUrl));
     }
 
     @And("^user refresh the page$")
